@@ -10,9 +10,22 @@ generator client {
 
 // Define your own datamodels here and run `yarn redwood prisma migrate dev`
 // to create migrations for them and apply to your dev DB.
-// TODO: Please remove the following example:
-model UserExample {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+model Post {
+  //  using cuid(), id String @id @default(cuid())
+  id        Int      @id @default(autoincrement())
+  title     String   @unique
+  body      String
+  createdAt DateTime @default(now())
+}
+
+// contact model
+
+model Contact {
+  id         Int      @id @default(autoincrement())
+  firstName  String
+  secondName String
+  email      String   @unique
+  subject    String
+  message    String
+  createdAt  DateTime @default(now())
 }
