@@ -10,6 +10,7 @@ generator client {
 
 // Define your own datamodels here and run `yarn redwood prisma migrate dev`
 // to create migrations for them and apply to your dev DB.
+// blog post model
 model Post {
   //  using cuid(), id String @id @default(cuid())
   id        Int      @id @default(autoincrement())
