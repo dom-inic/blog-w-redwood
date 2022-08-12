@@ -9,12 +9,20 @@
 
 import { Router, Route, Set } from '@redwoodjs/router'
 
+import ContactsLayout from 'src/layouts/ContactsLayout'
+
 import BlogLayout from 'src/layouts/BlogLayout'
 import PostsLayout from 'src/layouts/PostsLayout'
 
 const Routes = () => {
   return (
     <Router>
+      <Set wrap={ContactsLayout}>
+        <Route path="/contacts/new" page={ContactNewContactPage} name="newContact" />
+        <Route path="/contacts/{id:Int}/edit" page={ContactEditContactPage} name="editContact" />
+        <Route path="/contacts/{id:Int}" page={ContactContactPage} name="contact" />
+        <Route path="/contacts" page={ContactContactsPage} name="contacts" />
+      </Set>
       <Set wrap={PostsLayout}>
         <Route path="/posts/new" page={PostNewPostPage} name="newPost" />
         <Route path="/posts/{id:Int}/edit" page={PostEditPostPage} name="editPost" />
