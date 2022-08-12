@@ -13,9 +13,21 @@ generator client {
 // blog post model
 model Post {
   //  using cuid(), id String @id @default(cuid())
-  id        Int      @id @default(autoincrement())
-  title     String   @unique
+  id        Int       @id @default(autoincrement())
+  title     String    @unique
   body      String
+  createdAt DateTime  @default(now())
+  Comment   Comment[]
+}
+
+// article comments model
+
+model Comment {
+  // relation: one to many
+  id        Int      @id @default(autoincrement())
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    Int
+  message   String
   createdAt DateTime @default(now())
 }
 
