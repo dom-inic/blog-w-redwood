@@ -9,6 +9,8 @@
 
 import { Router, Route, Set } from '@redwoodjs/router'
 
+import CommentsLayout from 'src/layouts/CommentsLayout'
+
 import BlogLayout from 'src/layouts/BlogLayout'
 import ContactsLayout from 'src/layouts/ContactsLayout'
 import PostsLayout from 'src/layouts/PostsLayout'
@@ -16,6 +18,12 @@ import PostsLayout from 'src/layouts/PostsLayout'
 const Routes = () => {
   return (
     <Router>
+      <Set wrap={CommentsLayout}>
+        <Route path="/comments/new" page={CommentNewCommentPage} name="newComment" />
+        <Route path="/comments/{id:Int}/edit" page={CommentEditCommentPage} name="editComment" />
+        <Route path="/comments/{id:Int}" page={CommentCommentPage} name="comment" />
+        <Route path="/comments" page={CommentCommentsPage} name="comments" />
+      </Set>
       <Set wrap={ContactsLayout}>
         <Route path="/contacts/new" page={ContactNewContactPage} name="newContact" />
         <Route path="/contacts/{id:Int}/edit" page={ContactEditContactPage} name="editContact" />
