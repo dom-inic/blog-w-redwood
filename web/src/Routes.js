@@ -9,9 +9,8 @@
 
 import { Router, Route, Set } from '@redwoodjs/router'
 
-import CommentsLayout from 'src/layouts/CommentsLayout'
-
 import BlogLayout from 'src/layouts/BlogLayout'
+import CommentsLayout from 'src/layouts/CommentsLayout'
 import ContactsLayout from 'src/layouts/ContactsLayout'
 import PostsLayout from 'src/layouts/PostsLayout'
 
