@@ -18,22 +18,23 @@ const Routes = () => {
   return (
     <Router>
       <Set wrap={CommentsLayout}>
-        <Route path="/comments/new" page={CommentNewCommentPage} name="newComment" />
-        <Route path="/comments/{id:Int}/edit" page={CommentEditCommentPage} name="editComment" />
-        <Route path="/comments/{id:Int}" page={CommentCommentPage} name="comment" />
-        <Route path="/comments" page={CommentCommentsPage} name="comments" />
+        <Route path="/admin/comments/new" page={CommentNewCommentPage} name="newComment" />
+        <Route path="/admin/comments/{id:Int}/edit" page={CommentEditCommentPage} name="editComment" />
+        <Route path="/admin/comments/{id:Int}" page={CommentCommentPage} name="comment" />
+        <Route path="/admin/comments" page={CommentCommentsPage} name="comments" />
       </Set>
       <Set wrap={ContactsLayout}>
-        <Route path="/contacts/new" page={ContactNewContactPage} name="newContact" />
-        <Route path="/contacts/{id:Int}/edit" page={ContactEditContactPage} name="editContact" />
-        <Route path="/contacts/{id:Int}" page={ContactContactPage} name="contact" />
-        <Route path="/contacts" page={ContactContactsPage} name="contacts" />
+        <Route path="/admin/contacts/new" page={ContactNewContactPage} name="newContact" />
+        <Route path="/admin/contacts/new" page={ContactNewContactPage} name="newContact" />
+        <Route path="/admin/contacts/{id:Int}/edit" page={ContactEditContactPage} name="editContact" />
+        <Route path="/admin/contacts/{id:Int}" page={ContactContactPage} name="contact" />
+        <Route path="/admin/contacts" page={ContactContactsPage} name="contacts" />
       </Set>
       <Set wrap={PostsLayout}>
-        <Route path="/posts/new" page={PostNewPostPage} name="newPost" />
-        <Route path="/posts/{id:Int}/edit" page={PostEditPostPage} name="editPost" />
-        <Route path="/posts/{id:Int}" page={PostPostPage} name="post" />
-        <Route path="/posts" page={PostPostsPage} name="posts" />
+        <Route path="/admin/posts/new" page={PostNewPostPage} name="newPost" />
+        <Route path="/admin/posts/{id:Int}/edit" page={PostEditPostPage} name="editPost" />
+        <Route path="/admin/posts/{id:Int}" page={PostPostPage} name="post" />
+        <Route path="/admin/posts" page={PostPostsPage} name="posts" />
       </Set>
       <Set wrap={BlogLayout}>
         <Route path="/" page={HomePage} name="home" />
