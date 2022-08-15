@@ -7,7 +7,7 @@
 // 'src/pages/HomePage/HomePage.js'         -> HomePage
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
-import { Router, Route, Set } from '@redwoodjs/router'
+import { Router, Route, Set, Private } from '@redwoodjs/router'
 
 import BlogLayout from 'src/layouts/BlogLayout'
 import CommentsLayout from 'src/layouts/CommentsLayout'
@@ -17,12 +17,18 @@ import PostsLayout from 'src/layouts/PostsLayout'
 const Routes = () => {
   return (
     <Router>
+    <Route path="/login" page={LoginPage} name="login" />
+    <Route path="/signup" page={SignupPage} name="signup" />
+    <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
+    <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
+    <Private unauthenticated="home">
       <Set wrap={CommentsLayout}>
         <Route path="/admin/comments/new" page={CommentNewCommentPage} name="newComment" />
         <Route path="/admin/comments/{id:Int}/edit" page={CommentEditCommentPage} name="editComment" />
         <Route path="/admin/comments/{id:Int}" page={CommentCommentPage} name="comment" />
         <Route path="/admin/comments" page={CommentCommentsPage} name="comments" />
       </Set>
+
       <Set wrap={ContactsLayout}>
         <Route path="/admin/contacts/new" page={ContactNewContactPage} name="newContact" />
         <Route path="/admin/contacts/new" page={ContactNewContactPage} name="newContact" />
@@ -36,6 +42,7 @@ const Routes = () => {
         <Route path="/admin/posts/{id:Int}" page={PostPostPage} name="post" />
         <Route path="/admin/posts" page={PostPostsPage} name="posts" />
       </Set>
+      </Private>
       <Set wrap={BlogLayout}>
         <Route path="/" page={HomePage} name="home" />
         <Route path="/about" page={AboutPage} name="about" />
