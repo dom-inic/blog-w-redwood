@@ -2,6 +2,7 @@ export const QUERY = gql`
   query CommentsQuery {
     comments {
       id
+      message
     }
   }
 `

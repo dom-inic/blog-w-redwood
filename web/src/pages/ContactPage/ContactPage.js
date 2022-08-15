@@ -5,36 +5,59 @@ import {
   Submit,
   FieldError,
   Label,
+  FormError,
+  useForm,
 } from '@redwoodjs/forms'
-import { MetaTags } from '@redwoodjs/web'
+import { MetaTags, useMutation } from '@redwoodjs/web'
+import { toast, Toaster } from '@redwoodjs/web/toast'
+
+const CREATE_CONTACT = gql`
+  mutation CreateContactMutation($input: CreateContactInput!) {
+    createContact(input: $input) {
+      id
+    }
+  }
+`
 
 const ContactPage = () => {
+  const formMethods = useForm()
+  const [create, {loading, error}] = useMutation(CREATE_CONTACT, {
+    onCompleted: () => {
+      toast.success('Thank you for your submission!')
+      formMethods.reset()
+    },
+  })
+
   const onSubmit = (data) => {
     console.log(data)
+    create({ variables: { input: data } })
   }
   return (
     <>
       <MetaTags title="Contact" description="Contact page" />
-      <Form onSubmit={onSubmit} config={{ mode: 'onBlur' }} >
-        <Label htmlFor="firstname" errorClassName="error">
+
+      <Toaster />
+      <Form onSubmit={onSubmit} config={{ mode: 'onBlur' }} error={error} formMethods={formMethods} >
+      <FormError error={error} wrapperClassName="form-error" />
+        <Label htmlFor="firstName" errorClassName="error">
           First Name
         </Label>
         <TextField
-          name="firstname"
+          name="firstName"
           validation={{ required: true }}
           errorClassName="error"
         />
-        <FieldError name="firstname" className="error" />
+        <FieldError name="firstName" className="error" />
 
-        <Label htmlFor="secondname" errorClassName="error">
+        <Label htmlFor="secondName" errorClassName="error">
           Second Name
         </Label>
         <TextField
-          name="secondname"
+          name="secondName"
           validation={{ required: true }}
           errorClassName="error"
         />
-        <FieldError name="secondname" className="error" />
+        <FieldError name="secondName" className="error" />
 
         <Label htmlFor="email" errorClassName="error">
           Email
@@ -71,7 +94,7 @@ const ContactPage = () => {
           errorClassName="error"
         />
         <FieldError name="message" className="error" />
-        <Submit>Save</Submit>
+        <Submit disabled={loading} >Save</Submit>
       </Form>
     </>
   )
