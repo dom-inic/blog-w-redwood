@@ -1,3 +1,16 @@
+/**
+ * START --- SETUP TAILWINDCSS EDIT
+ *
+ * `yarn rw setup ui tailwindcss` placed these imports here
+ * to inject Tailwind's styles into your CSS.
+ * For more information, see: https://tailwindcss.com/docs/installation#include-tailwind-in-your-css
+ */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+/**
+ * END --- SETUP TAILWINDCSS EDIT
+ */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
@@ -49,11 +62,3 @@ input.error, textarea.error {
   display: inline;
 }
 
-form {
-  padding-left: 40%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  /* padding-right: 40%; */
-  border: 2px solid black;
-  background-color: rgb(30, 231, 100);
-}
